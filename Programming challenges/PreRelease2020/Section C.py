@@ -52,7 +52,7 @@ def MirrorImage(Grid, Header):
   PrintHeading(Header.Title)
   for Row in range(Header.Height):
     for Column in reversed(range(Header.Width)):
-      print(Grid[Row][column], end= '')
+      print(Grid[Row][Column], end= '')
     
         
      
