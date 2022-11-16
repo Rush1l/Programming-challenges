@@ -134,6 +134,8 @@ def LoadGreyScaleImage(FileIn, Grid, Header):
    Return type:List
    Description:Loads a greyscale image
 """
+  key = int(FileName[-1])
+  
   try:
     for Row in range(Header.Height):
       for Column in range(Header.Width):
@@ -143,6 +145,29 @@ def LoadGreyScaleImage(FileIn, Grid, Header):
   except:
     DisplayError("Image data error")    
   return Grid
+
+
+def FindSecretChar(PixelValue, Key):
+    alphabet = list(string.ascii_lowercase)
+    number = PixelValue - Key
+    if number == 0:
+        result = " "
+    elif number > 26:
+        result = "_"
+    else:
+        result = alphabet[number - 1]
+    return result
+        
+    
+    
+
+
+
+
+
+
+
+
   
 def LoadAsciiImage(FileIn, Grid, Header):
   """
@@ -278,4 +303,4 @@ Description: Carries out your command and creates   image.
     SaveFile(Grid, Header)
       
 if __name__ == "__main__":
-  Graphics()         
+  Graphics() 
