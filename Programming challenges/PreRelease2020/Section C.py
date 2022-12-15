@@ -80,76 +80,7 @@ def CompressFile():
       count = 1 
       
       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  #index = 1
-
-  #while index < len(Line2):
-    #for i in Line2:
-     # count = 0
-   # if i == Line2[index]:
-     # count += 1
-   # print(f" {count}, {i}")
-
-    
-    
-    
-      
-      
-       
-       
-     
-   
-   
-    
-
   
-
-  
-    
-      
-      
-    
-    
-    
-  
-
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  
-  
-  
-      
-    
-        
-     
-      
-
-
 def SaveImage(Grid, Header):
   """
    Parameters: List, Object
