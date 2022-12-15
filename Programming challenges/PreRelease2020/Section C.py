@@ -7,7 +7,7 @@
 
 EMPTY_STRING = ""
 MAX_WIDTH = 100
-MAX_HEIGHT = 100
+MAX_HEIGHT = 100 
 
 class FileHeader:
   def __init__(self):
@@ -54,7 +54,95 @@ def MirrorImage(Grid, Header):
     for ThisColumn in reversed(range(Header.Width)):
       print(Grid[ThisRow][ThisColumn], end= '')
     print()
+
+def CompressFile():
+  FileName = input("Enter the name of the file you want compressed: ")
+  ReadFile = open(FileName + ".txt", 'r')
+  File_firstline = ReadFile.readline()
+  Header = FileHeader()
+
+  Fields = File_firstline.split(",")
+  Header.Title = Fields[0]
+  Header.Width = int(Fields[1])
+  Header.Height = int(Fields[2])
+  Header.Type = "C"
+  Line1 = (f" {Header.Title}, {Header.Width}, {Header.Height}, {Header.Type}")
+  NewFile = open("CMP" + FileName + ".txt", "w")
+  NewFile.write(Line1+'\n')
+  Line2 = ReadFile.readline()
+  count = 1
+  for index in range(len(Line2)-1):
+    if Line2[index] == Line2[index+1]:
+      count += 1
+    else:
+      NewFile.write(f" {count},  {Line2[index]}")
+      NewFile.write("\n")
+      count = 1 
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  #index = 1
+
+  #while index < len(Line2):
+    #for i in Line2:
+     # count = 0
+   # if i == Line2[index]:
+     # count += 1
+   # print(f" {count}, {i}")
+
     
+    
+    
+      
+      
+       
+       
+     
+   
+   
+    
+
+  
+
+  
+    
+      
+      
+    
+    
+    
+  
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
       
     
         
@@ -134,8 +222,6 @@ def LoadGreyScaleImage(FileIn, Grid, Header):
    Return type:List
    Description:Loads a greyscale image
 """
-  key = int(FileName[-1])
-  
   try:
     for Row in range(Header.Height):
       for Column in range(Header.Width):
@@ -145,29 +231,6 @@ def LoadGreyScaleImage(FileIn, Grid, Header):
   except:
     DisplayError("Image data error")    
   return Grid
-
-
-def FindSecretChar(PixelValue, Key):
-    alphabet = list(string.ascii_lowercase)
-    number = PixelValue - Key
-    if number == 0:
-        result = " "
-    elif number > 26:
-        result = "_"
-    else:
-        result = alphabet[number - 1]
-    return result
-        
-    
-    
-
-
-
-
-
-
-
-
   
 def LoadAsciiImage(FileIn, Grid, Header):
   """
@@ -257,6 +320,7 @@ def DisplayMenu():
   print("L - Load graphics file") 
   print("D - Display image")
   print("M - Mirror image")
+  print("C - Compress file")
   print("E - Edit image")
   print("S - Save image")
   print("X - Exit program") 
@@ -293,6 +357,8 @@ Description: Carries out your command and creates   image.
       SaveImage(Grid, Header)
     elif MenuOption == 'M':
         MirrorImage(Grid, Header)
+    elif MenuOption == "C":
+        CompressFile()
     elif MenuOption == 'X':
       ProgramEnd = True
     else:
@@ -303,4 +369,4 @@ Description: Carries out your command and creates   image.
     SaveFile(Grid, Header)
       
 if __name__ == "__main__":
-  Graphics() 
+  Graphics()  
