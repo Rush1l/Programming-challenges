@@ -47,6 +47,30 @@ def DisplayImage(Grid, Header):
       print(Grid[ThisRow][ThisColumn], end= '')
     print()
 
+def HorizontalFlip(Grid, Header):
+  print()
+  PrintHeading(Header.Title)
+  for ThisRow in range(Header.Height):
+    for ThisColumn in reversed(range(Header.Width)):
+      print(Grid[ThisRow][ThisColumn], end= '')
+    print()
+
+def VerticalFlip(Grid, Header):
+  print()
+  PrintHeading(Header.Title)
+  for ThisRow in reversed(range(Header.Height)):
+    for ThisColumn in range(Header.Width):
+      print(Grid[ThisRow][ThisColumn], end= '')
+    print()
+
+def DoubleFlip(Grid, Header):
+  print()
+  PrintHeading(Header.Title)
+  for ThisRow in reversed(range(Header.Height)):
+    for ThisColumn in reversed(range(Header.Width)):
+      print(Grid[ThisRow][ThisColumn], end= '')
+    print()
+
 def MirrorImage(Grid, Header):
 
   PrintHeading(Header.Title)
@@ -251,6 +275,9 @@ def DisplayMenu():
   print("L - Load graphics file") 
   print("D - Display image")
   print("M - Mirror image")
+  print("HF - Horizontal Flip")
+  print("VF - Vertical Flip")
+  print("DF - Double Flip")
   print("C - Compress file")
   print("E - Edit image")
   print("S - Save image")
@@ -281,7 +308,13 @@ Description: Carries out your command and creates   image.
     if MenuOption == 'L':
       Grid, Header = LoadFile(Grid, Header)
     elif MenuOption == 'D':
-      DisplayImage(Grid, Header) 
+      DisplayImage(Grid, Header)
+    elif MenuOption == "HF":
+      HorizontalFlip(Grid, Header)
+    elif MenuOption == "VF":
+      VerticalFlip(Grid, Header)
+    elif MenuOption == "DF":
+      DoubleFlip(Grid, Header)
     elif MenuOption == 'E':
       Grid = EditImage(Grid, Header) 
     elif MenuOption == 'S':    
@@ -300,4 +333,4 @@ Description: Carries out your command and creates   image.
     SaveFile(Grid, Header)
       
 if __name__ == "__main__":
-  Graphics()  
+  Graphics()
